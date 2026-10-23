@@ -21,7 +21,7 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
 
-      - name: run tests on main branch
+      - name: run test on main branch
         run: mvn test
 
       - name: checkstyle
