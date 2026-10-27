@@ -5,7 +5,7 @@ on:
       - main
   pull_request:
     branches:
-      - main, develop
+      - main, develop, banana
 
 jobs:
   build:
