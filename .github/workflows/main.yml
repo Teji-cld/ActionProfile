@@ -44,3 +44,23 @@ jobs:
       - name: run test on other branches
         if: github.ref != 'refs/heads/main'
         run: echo "No tests are run on this branch, please check logs for more information."
+
+  security-scan:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner in fs mode
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          exit-code: "0"
+          output: "trivy-results.json"
+
+      - name: upload trivy scan artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-scan-results
+          path: trivy-results.json
