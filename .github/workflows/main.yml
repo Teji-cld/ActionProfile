@@ -12,6 +12,7 @@ permissions:
 
 env:
   ECR_REPOSITORY: vprofile-appimage
+  AWS_REGION: us-east-1
 
 jobs:
   build:
